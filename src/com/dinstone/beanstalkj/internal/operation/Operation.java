@@ -24,6 +24,6 @@ public interface Operation<R> {
 
     public void writeRequest(Connection connect) throws IOException;
 
-    public R readRespose(Connection connect) throws IOException;
+    public R readResponse(Connection connect) throws IOException;
 
 }

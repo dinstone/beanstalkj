@@ -69,7 +69,7 @@ public abstract class AbstractOperation<R> implements Operation<R> {
     }
 
     @Override
-    public R readRespose(Connection connect) throws IOException {
+    public R readResponse(Connection connect) throws IOException {
         String line = null;
         byte[] dataBuf = null;
 
