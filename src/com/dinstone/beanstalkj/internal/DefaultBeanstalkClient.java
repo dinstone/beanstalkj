@@ -53,18 +53,19 @@ public class DefaultBeanstalkClient implements BeanstalkClient {
      * @param config
      */
     public DefaultBeanstalkClient(Configuration config) {
+        this(config, null, null);
+    }
+
+    public DefaultBeanstalkClient(Configuration config, Connection connection, ConnectionInitializer initer) {
         if (config == null) {
             throw new IllegalArgumentException("config is null");
         }
 
-        this.connection = new BioConnection(config.getServiceHost(), config.getServicePort());
-    }
-
-    public DefaultBeanstalkClient(Configuration config, Connection connection, ConnectionInitializer initer) {
         if (connection == null) {
-            throw new IllegalArgumentException("connection is null");
+            connection = new BioConnection(config.getServiceHost(), config.getServicePort());
         }
         this.connection = connection;
+        AbstractOperation.maxLength = config.getInt(Configuration.JOB_MAXSIZE, 64 * 1024);
 
         if (initer != null) {
             try {

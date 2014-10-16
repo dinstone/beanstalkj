@@ -20,9 +20,6 @@ import com.dinstone.beanstalkj.internal.Connection;
 
 public class PutOperation extends AbstractOperation<Long> {
 
-    /** default is 2^16 */
-    private final int maxLength = 64 * 1024;
-
     public PutOperation(int priority, int delay, int ttr, byte[] data) {
         if (data == null) {
             throw new IllegalArgumentException("data is null");

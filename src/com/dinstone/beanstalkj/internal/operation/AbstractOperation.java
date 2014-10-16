@@ -33,6 +33,9 @@ import com.dinstone.beanstalkj.internal.Connection;
  */
 public abstract class AbstractOperation<R> implements Operation<R> {
 
+    /** default is 2^16 */
+    public static int maxLength = 64 * 1024;
+
     private static final byte[] CLF = { '\r', '\n' };
 
     protected final Charset charset;

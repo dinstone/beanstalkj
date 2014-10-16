@@ -35,7 +35,7 @@ public class NioConnection implements Connection {
     }
 
     @Override
-    public <T> T handle(Operation<T> operation) throws IOException {
+    public synchronized <T> T handle(Operation<T> operation) throws IOException {
         operation.writeRequest(this);
         return operation.readResponse(this);
     }
